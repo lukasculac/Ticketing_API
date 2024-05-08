@@ -4,13 +4,13 @@
   <title>Login page</title>
 </head>
 <body>
-  
-  
-  
 
-<form action="/user" method="post" enctype="multipart/form-data">
+
+
+
+<form action="/tickets" method="post" enctype="multipart/form-data">
   @csrf
-  
+
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -21,10 +21,10 @@
         </div>
         <div>
             <label for="subject">Department:</label>
-            <select id="subject" name="subject">
-                <option value="General Inquiry">Sales</option>
+            <select id="department" name="department">
+                <option value="Sales">Sales</option>
                 <option value="Support">Support</option>
-                <option value="Feedback">Finance</option>
+                <option value="Finance">Finance</option>
                 <option value="HR">Human resources</option>
             </select>
         </div>
@@ -41,12 +41,12 @@
         </div>
     </form>
 
-  
 
-  
-  
+
+
+
   <?php
-  // Your PHP code goes here 
+  // Your PHP code goes here
   ?>
 </body>
 </html>

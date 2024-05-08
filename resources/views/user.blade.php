@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="path/to/your/style.css">
 
   <div style="display: flex; justify-content: center;">
-    
-    <a href="{{ url('/login_page') }}">EDIT TICKET</a>
-    <a href="{{ url('/login_page') }}">NEW TICKET</a>
+
+    <a href="{{ url('/create_ticket') }}">EDIT TICKET</a>
+    <a href="{{ url('/create_ticket') }}">NEW TICKET</a>
   </div>
-  
+
   <?php
   // Your PHP code goes here
   ?>

@@ -6,18 +6,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/user', function (){
+    return view('user');
+});
 
 # create a new route for the agent page
 Route::get('/agent', function () {
     return view('agent');
 });
 
-#Create login page
-Route::get('/login_page', function () {
-    return view('login_page');
+#Create ticket page
+Route::get('/create_ticket', function () {
+    return view('create_ticket');
 });
 
-Route::post('/user', function () {
-    dd(request()->all());
+Route::post('/tickets', function () {
+    \App\Models\Ticket::create([
+        'name' => request('name'),
+        'email' => request('email'),
+        'department' => request('department'),
+        'message' => request('message')
+    ]);
 });
+
+
