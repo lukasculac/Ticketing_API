@@ -23,6 +23,16 @@
     </div>
 </div>
 
+
+<div style="display: flex; justify-content: center; color: red">
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
+
+
 <?php
 // Your PHP code goes here
 ?>
