@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login page</title>
+  <title>Create ticket</title>
+    <link rel="stylesheet" href="{{ asset('styles.css') }}">
 </head>
 <body>
-
+<x-header />
 
 
 
@@ -37,16 +38,14 @@
             <input type="file" id="file" name="file">
         </div>
         <div>
-            <button type="submit">Submit</button>
+            <button type="submit" style="color:blue;text-align:center;">Submit</button>
         </div>
-    </form>
-
-
-
+</form>
 
 
   <?php
-  // Your PHP code goes here
+
   ?>
 </body>
 </html>
+

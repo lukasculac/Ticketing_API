@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User page</title>
+    <title>Home page</title>
+    <link rel="stylesheet" href="{{ asset('styles.css') }}">
 </head>
 <body>
-  <h1>User page</h1>
-  <link rel="stylesheet" href="path/to/your/style.css">
+    <x-header />
 
-  <div style="display: flex; justify-content: center;">
+    <div class="button-container">
+        <div class="button-wrapper">
+            <a href="{{ url('/Search_ticket') }}" class="edit-button">EDIT TICKET</a>
+        </div>
+        <div class="button-wrapper">
+            <a href="{{ url('/create_ticket') }}" class="new-button">NEW TICKET</a>
+        </div>
+    </div>
 
-    <a href="{{ url('/create_ticket') }}">EDIT TICKET</a>
-    <a href="{{ url('/create_ticket') }}">NEW TICKET</a>
-  </div>
-
-  <?php
-  // Your PHP code goes here
-  ?>
+    <?php
+    // Your PHP code goes here
+    ?>
 </body>
 </html>

@@ -1,32 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Models\Ticket;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index']);
 
-Route::get('/user', function (){
-    return view('user');
-});
+#Create ticket page
+Route::get('/create_ticket', [UserController::class, 'create_ticket']);
+
+#Store data from form
+Route::post('/tickets', [UserController::class, 'store_ticket']);
+
+#Search for ticket page
+Route::get('/Search_ticket', [UserController::class, 'search_ticket_page']);
+Route::post('/find_tickets', [UserController::class, 'find_ticket']);
 
 # create a new route for the agent page
 Route::get('/agent', function () {
     return view('agent');
 });
 
-#Create ticket page
-Route::get('/create_ticket', function () {
-    return view('create_ticket');
-});
 
-Route::post('/tickets', function () {
-    \App\Models\Ticket::create([
-        'name' => request('name'),
-        'email' => request('email'),
-        'department' => request('department'),
-        'message' => request('message')
-    ]);
-});
 
 
