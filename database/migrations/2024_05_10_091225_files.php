@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('department');
-            $table->string('message');
-            //$table->string('fileName')->nullable()->default(null);
-            $table->string('status')->default('pending'); //pending or resolved
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
+            $table->string('fileName');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('files');
     }
 };

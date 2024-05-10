@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+
         // Delete all files in the public/uploads directory
         $files = Storage::disk('public')->files('uploads');
-        Storage::disk('public')->delete($files);
+        if (!empty($files)) {
+            // If there are files, delete them
+            Storage::disk('public')->delete($files);
+        }
+
+
+
 
 
         Ticket::create([

@@ -35,7 +35,7 @@
         </div>
         <div>
             <label for="file">Attach File:</label>
-            <input type="file" id="file" name="file">
+            <input type="file" id="file" name="files[]" multiple>
         </div>
         <div>
             <button type="submit" style="color:blue;text-align:center;">Submit</button>
