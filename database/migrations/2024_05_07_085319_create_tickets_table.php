@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('department');
             $table->string('message');
+            $table->string('status')->default('pending'); //pending or resolved
             $table->timestamps();
         });
     }

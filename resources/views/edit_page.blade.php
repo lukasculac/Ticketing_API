@@ -8,6 +8,7 @@
 <x-header />
 
 @php
+    /** @var int $id */
     $ticket = \App\Models\Ticket::find($id);
 @endphp
 
@@ -40,10 +41,15 @@
         </div>
         <div>
             <button type="submit" style="color:blue;text-align:center;">Submit</button>
-            //TODO pass new object and replace the old one
+
         </div>
     </div>
 </form>
+
+<div>
+    <p>Status of your ticket is: </p>
+    <p style="color:{{$ticket->status == 'pending' ? 'red' : 'green'}}">{{$ticket->status == 'pending' ? 'PENDING' : 'RESOLVED'}}</p>
+</div>
 
 
 </body>
