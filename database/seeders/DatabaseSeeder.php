@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+
+        // Delete all files in the public/uploads directory
+        $files = Storage::disk('public')->files('uploads');
+        Storage::disk('public')->delete($files);
+
 
         Ticket::create([
             'name' => 'Luka Sculac',
