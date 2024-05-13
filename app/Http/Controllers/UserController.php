@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -45,8 +47,6 @@ class UserController extends Controller
         return redirect('/');
     }
 
-
-
     public function handleFile($file){
         $fileName = $file->getClientOriginalName();
         $path = $file->storeAs('uploads', $fileName, 'public');
@@ -60,7 +60,6 @@ class UserController extends Controller
 
 
     //search for ticket handler
-
     public function find_ticket(Request $request){
         $inputData = $request->only(['name', 'email']);
         $ticket = Ticket::where($inputData)->first();
@@ -79,11 +78,32 @@ class UserController extends Controller
         $ticket = Ticket::find($id);
         $ticket->update($request->except('file'));
 
-        if($request->hasFile('file')) {
-            $ticket->fileName = $this->handleFile($request->file('file'));
-            $ticket->save();
+        if($request->hasFile('files.*')) {
+            foreach($request->file('files') as $file) {
+                $fileName = $this->handleFile($file);
+                if($fileName) {
+                    $ticket->files()->create(['fileName' => $fileName]);
+                }
+            }
         }
+
+        $ticket->save();
         return redirect('/');
+    }
+
+    public function delete_file($id)
+    {
+        $file = File::find($id);
+        if ($file) {
+            $fileName = $file->fileName; // Store the file name before deletion
+
+            // Delete the file from storage
+            Storage::disk('public')->delete('uploads/' . $fileName);
+
+            // Delete the file record from the database
+            $file->delete();
+        }
+        #return response()->json(['message' => 'File ' . $fileName . ' has been deleted.']);
     }
 
 }

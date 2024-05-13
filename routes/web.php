@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Ticket;
 
+//USER ROUTES
 Route::get('/', [UserController::class, 'index']);
 
 #Create ticket page
@@ -24,7 +25,11 @@ Route::get('/edit_page/{id}', function ($id){
 #gets id from ticket and updates that ticket in the database
 Route::post('update_ticket/{id}', [UserController::class, 'update_ticket'])->name('update_ticket');
 
+#deletes files from database
+Route::delete('/delete_file/{id}', [UserController::class, 'delete_file'])->name('delete_file');
 
+
+//AGENT ROUTES
 
 # create a new route for the agent page
 Route::get('/agent', function () {

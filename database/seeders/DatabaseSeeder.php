@@ -27,19 +27,20 @@ class DatabaseSeeder extends Seeder
 
 
 
-
+        /*
         Ticket::create([
-            'name' => 'Luka Sculac',
+            'name' => 'Luka',
             'email' => 'luka.sculac@gmail.com',
             'department' => 'HR',
             'message' => 'I have a problem with my computer',
         ]);
 
         Ticket::create([
-            'name' => 'Mile Milić',
-            'email' => 'mile.milic2@gmail.com',
+            'name' => 'Mile',
+            'email' => 'mile.milic@gmail.com',
             'department' => 'Support',
             'message' => 'I need emotional support',
         ]);
+        */
     }
 }

@@ -3,9 +3,13 @@
 <head>
     <title>Edit page</title>
     <link rel="stylesheet" href="{{ asset('styles.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('js/delete_file.js') }}"></script>
+
 </head>
 <body>
-<x-header />
+<x-header/>
 
 @php
     /** @var int $id */
@@ -37,14 +41,30 @@
         </div>
         <div>
             <label for="file">Attach File:</label>
-            <input type="file" id="file" name="file">
+            <input type="file" id="file" name="files[]" multiple>
         </div>
+
         <div>
             <button type="submit" style="color:blue;text-align:center;">Submit</button>
 
         </div>
     </div>
 </form>
+
+@if($ticket->files()->count() > 0)
+    <p>Your uploaded files:</p>
+@endif
+<!--Form for deleting ticket-->
+@foreach($ticket->files as $file)
+    <div id="file-{{ $file->id }}">
+        <p>{{ $file->fileName }}</p>
+        <form action="{{ route('delete_file', ['id' => $file->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="delete-file" data-id="{{ $file->id }}">Delete</button>
+        </form>
+    </div>
+@endforeach
 
 <div>
     <p>Status of your ticket is: </p>
