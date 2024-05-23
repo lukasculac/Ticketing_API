@@ -1,0 +1,1 @@
+Work on deleting the items in editing page and continue to work on agent page
